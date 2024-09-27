@@ -39,5 +39,9 @@ int main(void) {
 
   printarr_vert(O, NO);
 
+  free(A);
+  free(O);
+  free(F);
+
   return 0;
 }
