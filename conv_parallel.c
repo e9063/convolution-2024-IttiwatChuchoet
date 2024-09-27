@@ -26,7 +26,7 @@ int main(void) {
 
   int *O = calloc(NO, sizeof(int));
 
-  #pragma omp parallel shared(A) shared(F) shared(O)
+  #pragma omp parallel shared(A) shared(F) shared(O) num_threads(4)
   {
     #pragma omp for
     for (int i = 0; i < NO; i++) {
