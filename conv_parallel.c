@@ -38,7 +38,7 @@ int main(void) {
     }
   }
 
-  double end = omp_get_wtime();
+  // double end = omp_get_wtime();
 
   printarr_vert(O, NO);
   // printf("Time (user + sys): %f", end - start);

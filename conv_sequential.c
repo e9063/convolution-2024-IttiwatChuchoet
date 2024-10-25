@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <omp.h>
+#include <time.h>
 
 void printarr_vert(int* arr, int len) {
   for (int i = 0; i < len; i++) {
@@ -26,7 +26,7 @@ int main(void) {
 
   int *O = calloc(NO, sizeof(int));
 
-  // double start = omp_get_wtime();
+  // clock_t start = clock();
   
   for (int i = 0; i < NO; i++) {
     for (int m = i; m < NF + i; m++) {
@@ -34,10 +34,10 @@ int main(void) {
     }
   }
 
-  double end = omp_get_wtime();
+  // clock_t end = clock();
 
   printarr_vert(O, NO);
-  // printf("Time (user + sys): %f", end - start);
+  // printf("Time (user + sys): %f", (double)(end - start)/CLOCKS_PER_SEC);
 
   free(O);
   free(A);

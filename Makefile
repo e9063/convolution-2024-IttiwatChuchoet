@@ -1,5 +1,5 @@
 s:
-	gcc -fopenmp conv_sequential.c -o conv_sequential
+	gcc conv_sequential.c -o conv_sequential
 	conv_sequential < input_hard.txt
 
 p:
