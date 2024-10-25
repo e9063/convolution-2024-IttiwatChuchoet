@@ -26,11 +26,10 @@ int main(void) {
 
   int *O = calloc(NO, sizeof(int));
 
-  #pragma omp parallel shared(A, F, O) num_threads(4)
+  #pragma omp parallel num_threads(4)
   {
     #pragma omp for
     for (int i = 0; i < NO; i++) {
-      #pragma omp critical
       for (int m = i; m < NF + i; m++) {
         O[i] += A[m] * F[m - i];
       }
