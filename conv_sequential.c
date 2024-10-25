@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 
 void printarr_vert(int* arr, int len) {
   for (int i = 0; i < len; i++) {
@@ -25,13 +26,18 @@ int main(void) {
 
   int *O = calloc(NO, sizeof(int));
 
+  // double start = omp_get_wtime();
+  
   for (int i = 0; i < NO; i++) {
     for (int m = i; m < NF + i; m++) {
       O[i] += A[m] * F[m - i];
     }
   }
 
+  double end = omp_get_wtime();
+
   printarr_vert(O, NO);
+  // printf("Time (user + sys): %f", end - start);
 
   free(O);
   free(A);

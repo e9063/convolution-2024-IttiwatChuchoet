@@ -26,6 +26,8 @@ int main(void) {
 
   int *O = calloc(NO, sizeof(int));
 
+  // double start = omp_get_wtime();
+
   #pragma omp parallel num_threads(4)
   {
     #pragma omp for
@@ -36,7 +38,10 @@ int main(void) {
     }
   }
 
+  double end = omp_get_wtime();
+
   printarr_vert(O, NO);
+  // printf("Time (user + sys): %f", end - start);
 
   free(A);
   free(O);
