@@ -8,7 +8,7 @@ void printarr_vert(int* arr, int len) {
   }
 }
 
-int main(void) {
+int main(int argc, char* argv[]) {
   int NA, NF;
   scanf("%d %d", &NA, &NF);
 
@@ -26,7 +26,7 @@ int main(void) {
 
   int *O = calloc(NO, sizeof(int));
 
-  // double start = omp_get_wtime();
+  double start = omp_get_wtime();
 
   #pragma omp parallel num_threads(4)
   {
@@ -38,11 +38,14 @@ int main(void) {
     }
   }
 
-  // double end = omp_get_wtime();
+  double end = omp_get_wtime();
 
-  printarr_vert(O, NO);
-  // printf("Time (user + sys): %f", end - start);
-
+  if (argc > 1 && argv[1][0] == 't') {
+    printf("Time (user + sys): %f", end - start);
+  } else {
+    printarr_vert(O, NO);
+  }
+  
   free(A);
   free(O);
   free(F);

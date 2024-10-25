@@ -8,7 +8,7 @@ void printarr_vert(int* arr, int len) {
   }
 }
 
-int main(void) {
+int main(int argc, char* argv[]) {
   int NA, NF;
   scanf("%d %d", &NA, &NF);
 
@@ -26,7 +26,7 @@ int main(void) {
 
   int *O = calloc(NO, sizeof(int));
 
-  // clock_t start = clock();
+  clock_t start = clock();
   
   for (int i = 0; i < NO; i++) {
     for (int m = i; m < NF + i; m++) {
@@ -34,10 +34,13 @@ int main(void) {
     }
   }
 
-  // clock_t end = clock();
+  clock_t end = clock();
 
-  printarr_vert(O, NO);
-  // printf("Time (user + sys): %f", (double)(end - start)/CLOCKS_PER_SEC);
+  if (argc > 1 && argv[1][0] == 't') {
+    printf("Time (user + sys): %f", (double)(end - start)/CLOCKS_PER_SEC);
+  } else {
+    printarr_vert(O, NO);
+  }
 
   free(O);
   free(A);
