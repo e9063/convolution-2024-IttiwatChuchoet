@@ -1,3 +1,7 @@
+build:
+	gcc conv_sequential.c -o conv_sequential
+	gcc -fopenmp conv_parallel.c -o conv_parallel
+
 s:
 	gcc conv_sequential.c -o conv_sequential
 	conv_sequential < input_hard.txt
